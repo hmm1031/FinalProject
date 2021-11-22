@@ -40,4 +40,3 @@ ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = t
 
 
 
-
