@@ -1,0 +1,50 @@
+---
+title: "FInal Project"
+author: "Hanna Mogensen & Chloe Pearson"
+date: "11/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Map (otalith, tagging sites, receivers sites, water sites)
+
+```{r setup, include=FALSE}
+
+```
+
+# Map (density of detections by receiver)
+  Hanna is going to work on finding a basemap of Great Bay
+  Chloe is going to work on getting lats and longs for each point
+
+# 2 Animations (paths of two different individual smelt)
+1st Priority: 
+  53786 - Bellamy river, M
+  53774 - Squamscott river, F
+
+2nd Priority:
+  53792 - Squamscott river, M
+  53801 - Oyster river, M
+  
+# 2 Figures of Data (fish characteristics)
+  Otolith vs. tag by length and sex (by river?)
+  Otolith by date?? add image as background? 
+  
+
+
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
