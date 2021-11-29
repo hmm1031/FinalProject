@@ -32,10 +32,18 @@ lat_long <- read.csv("lat_longs_rfw.csv", stringsAsFactors = TRUE)
 
 AllPoints <- data.frame(lat_long)
 
-#Map of all locations, with specfic marker colors, hsapes, and sizes
+#Map of all locations, with specific marker colors, shapes, and sizes
 
-ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = type, color= type, size = type)) + scale_shape_manual (values= c(15,17,19)) + scale_size_manual(values = c(4,2,2)) + scale_color_manual (values=c("orange", "purple", "turquoise2")) 
+ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = type, color= type, size = type)) + scale_shape_manual (values= c(15,17,19)) + scale_size_manual(values = c(4,2,2)) + scale_color_manual (values=c("tomato1", "deeppink3", "turquoise")) + ggtitle("Map of Sampling Locations in Great Bay") + theme(plot.title = element_text(face = "bold")) + theme (plot.title = element_text(hjust = 0.5)) 
 
-?legend
++ scale_fill_discrete(breaks=c("Fyke net","Receiver","Water Sample"))
++ guides(fill="Type")
+
+
+#Heat map based on receiver pings
+
+ReceiverPings <- 
+
+
 
 
