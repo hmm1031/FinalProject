@@ -29,6 +29,7 @@ my_points <- data.frame(lon = -70.7833, lat = 43.0989) #need to pull in CSV file
 myMap <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11) 
 
 lat_long <- read.csv("lat_longs_rfw.csv", stringsAsFactors = TRUE)
+<<<<<<< HEAD
 
 AllPoints <- data.frame(lat_long)
 
@@ -44,6 +45,15 @@ ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = t
 
 ReceiverPings <- 
 
+=======
+>>>>>>> 411ae50b7eec951804a620d0d7b678f183ad35b5
 
+AllPoints <- data.frame(lat_long)
+
+#Map of all locations, with specfic marker colors, hsapes, and sizes
+
+ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = type, color= type, size = type)) + scale_shape_manual (values= c(15,17,19)) + scale_size_manual(values = c(4,2,2)) + scale_color_manual (values=c("orange", "purple", "turquoise2")) 
+
+?legend
 
 
