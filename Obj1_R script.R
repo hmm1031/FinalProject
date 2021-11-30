@@ -29,11 +29,10 @@ my_points <- data.frame(lon = -70.7833, lat = 43.0989) #need to pull in CSV file
 myMap <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11) 
 
 lat_long <- read.csv("lat_longs_rfw.csv", stringsAsFactors = TRUE)
-<<<<<<< HEAD
 
 AllPoints <- data.frame(lat_long)
 
-#Map of all locations, with specific marker colors, shapes, and sizes
+#Obj 1: Map of all locations, with specific marker colors, shapes, and sizes
 
 ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = type, color= type, size = type)) + scale_shape_manual (values= c(15,17,19)) + scale_size_manual(values = c(4,2,2)) + scale_color_manual (values=c("tomato1", "deeppink3", "turquoise")) + ggtitle("Map of Sampling Locations in Great Bay") + theme(plot.title = element_text(face = "bold")) + theme (plot.title = element_text(hjust = 0.5)) 
 
@@ -41,19 +40,22 @@ ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = t
 + guides(fill="Type")
 
 
-#Heat map based on receiver pings
+#Obj 2: Heat map based on receiver pings
+require(dplyr)
+#bring in data file
+ReceiverPings <- read.csv("all_detection_data.csv", stringsAsFactors = TRUE)
+LatLong <- read.csv("receiver_lat_long.csv")
+#make file a data frame
+ReceiverPings <- data.frame(ReceiverPings)
+LatLong <- data.frame(LatLong)
+#combine data frame with other data set to include lat and longs into new dataset "ReceiverPingLL"
+ReceiverPingLL <- left_join(ReceiverPings, LatLong) #insert y based on X
+View(ReceiverPingLL)
+#create summary table with counts for receiver number
+ReceiverSummary <-ReceiverPingLL%>%
+  select(receiver, latitude, longitude)%>%
+  count(ReceiverSummary, vars= "receiver", wt = NULL, sort = FALSE, name = "Frequency")
 
-ReceiverPings <- 
 
-=======
->>>>>>> 411ae50b7eec951804a620d0d7b678f183ad35b5
-
-AllPoints <- data.frame(lat_long)
-
-#Map of all locations, with specfic marker colors, hsapes, and sizes
-
-ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = type, color= type, size = type)) + scale_shape_manual (values= c(15,17,19)) + scale_size_manual(values = c(4,2,2)) + scale_color_manual (values=c("orange", "purple", "turquoise2")) 
-
-?legend
 
 
