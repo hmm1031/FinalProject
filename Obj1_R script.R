@@ -51,11 +51,12 @@ LatLong <- data.frame(LatLong)
 #combine data frame with other data set to include lat and longs into new dataset "ReceiverPingLL"
 ReceiverPingLL <- left_join(ReceiverPings, LatLong) #insert y based on X
 View(ReceiverPingLL)
-#create summary table with counts for receiver number
+#create summary table with counts for receiver number 
 ReceiverSummary <-ReceiverPingLL%>%
   select(receiver, latitude, longitude)%>%
   count(ReceiverSummary, vars= "receiver", wt = NULL, sort = FALSE, name = "Frequency")
-
+#view new data set
+View(ReceiverSummary)
 
 
 
