@@ -42,6 +42,22 @@ ggplot(data = smry,
         axis.text.x = element_text(color = "black", angle = 90))+ 
   facet_wrap(~Collection.Method)
 
+#this is for the first data graph figure (Fig. 6)
+# for the chunk: r, echo = FALSE, warning = FALSE, fig.align = "center", 
+# fig.cap = "Mean total length of rainbow smelt sampled for tagging verus otolith microchemistry analysis. 
+# Samples taken across four rivers (n= 7, 21, 18 for tagged fish from the Bellamy, Oyster, and Squamscott River, respectively; 
+# n= 11, 29, 31, 8 for otolith fish from the Bellamy, Oyster, Squamscott, and Winnicut River, respectively). 
+#Error bars represent standard error."
+
+data <- read.csv("tag_otolith.csv")
+
+require(dplyr)
+require(ggplot2)
+require(plotrix)
+require(readxl)
+require(lubridate)
+require(stringr)
+
 # remove river so sites called by just name, not name+river
 data$Location <- sub("Squamscott River", "Squamscott", data$Location)
 data$Location <- sub("Squamscott", "Squamscott River", data$Location)
