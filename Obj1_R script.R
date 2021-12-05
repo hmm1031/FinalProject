@@ -22,6 +22,7 @@ library(marmap)
 library(lattice)
 library(ggplot2)
 
+#Objective 1 and two: Map of sampling area and sampling type, bubble map of frequency of fish pings across all receivers. 
 
 install.packages('usmap', dependencies= TRUE)
 library(usmap)

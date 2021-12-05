@@ -1,50 +1,168 @@
 ---
-title: "FInal Project"
+title: "BIOL 806: Final Project <br> Movement Patterns of Rainbow Smelt in Great Bay Estuary, NH"
 author: "Hanna Mogensen & Chloe Pearson"
-date: "11/17/2021"
+date: "12/07/2021"
 output: html_document
 ---
+<style type="text/css">
+
+h1.title {
+  font-size: 30px;
+  text-align: center;
+}
+h4.author { /* Header 4 - and the author and data headers use this too  */
+    font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+}
+h4.date { /* Header 4 - and the author and data headers use this too  */
+  font-size: 18px;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+}
+
+/* Whole document: */
+body{
+  font-size: 14pt;
+}
+</style>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=80), tidy=TRUE)
 ```
 
-# Map (otalith, tagging sites, receivers sites, water sites)
+### Introduction
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Migration is one of the most widely observed phenomena in biology, occurring in all major branches of the animal kingdom (Dingle 2014).  Migrations can be impressive, covering hundreds of kilometers and crossing through multiple biomes, making them incredibly taxing and dangerous for the migrating individual (Chapman et al. 2014). Therefore, the decision to migrate is dictated by a balance between the gain associated with a new habitat, such as enhanced feeding and access to breeding sites, and the potential for greater mortality and energy expenditure (Secor 2015; Bernatchez and Dodson 2011). 
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In aquatic environments, fish that migrate across salinity boundaries to complete their life history are defined as diadromous.Anadromy, a form of diadromy, describes fish that spend the majority of their life in saltwater and return to freshwater to breed (chapman et al. 2014; Myers 1949). These fishes undergo at least two major migrations in their life where they cross the salinity boundary, once traveling from freshwater to saltwater as larvae or juveniles, and a second time traveling back into the freshwater environment as adults to spawn. Anadromous fish are very important to aquatic communities because they forge an ecological significant link between marine and freshwater ecosystems (Secor 2015). With an extended range across two major ecosystems, changes in abundance or behavior of anadromous species can impact community structures on a much broader scale, compared to a resident species living in just one ecosystem (Holdo et al. 2011).
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Rainbow smelt (Osmerus mordax) are an anadromous species in decline. Historically, their geographic range extended from Chesapeake Bay to Labrador (Kendall 1962, Buckley 1989). However, over the past few centuries, this range has decreased significantly, currently being restricted to Massachusetts and northwards (Enterline et al. 2012). Populations of rainbow smelt in the southern extent of their range (Massachusetts, New Hampshire, and southern Maine) have been displaying indications of population stress: truncated age structures within the spawning run, high male to female ratios in some rivers, and a higher portion of age-1 spawners than historically observed (Enterline et al. 2012).These indicators have also been reflected in population abundance, with current harvests of rainbow smelt at historically low levels (Chase 2006). Rainbow smelt play an important role in supporting popular recreational fisheries in New Hampshire and Maine where they are caught by ice-fishing (December-March). They also contribute to important fisheries in coastal New England as a prey item for other recreational fish such as striped bass (Morone saxatilis), bluefish (Pomatomus salatrix), and Gulf of Maine Atlantic salmon (Salmo salar) which are listed under the Endangered Species Act (Collette and Klein-MacPhee 2002).  In 2004, in response to declining populations of rainbow smelt and taking into consideration their importance in commercial and recreational fisheries, the National Oceanographic and Atmospheric Association’s (NOAA) National Marine Fisheries Service (NMFS) listed rainbow smelt as a species of concern in the Gulf of Maine (Chase 2006). 
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;As an ecologically and culturally significant species of concern, understanding key life history stages of the rainbow smelt is important to maintain long-term population stability. One emerging tool that has shown promise in further understanding nuances in fish movement is acoustic telemetry. Acoustic telemetry has been shown to be a powerful method to monitor the movement patterns of individual aquatic animals, including rainbow smelt (Hussey et al. 2015; Donaldson et al. 2014, Enterline et al. 2012). It can be used to quantify migratory behaviors and habitat use across freshwater, estuarine, and marine environments (Furey et al. 2016; Clark et al. 2016; Furey et al. 2013). Presence of individuals can be recorded along a known array, allowing for paths of movement and general duration of stay to be determined for an individual (Hussey et al. 2015). Acoutsic telemtery does have limitations. For example, tagged individuals are not recaptured, which means data collection is limited by the battery life of the tag. Additionally, data collection relies on proximity of the tag to a receiver, meaning that if a tagged individual leaves the array, data collection will cease. These limitations mean that only a portion of an individual’s life can be monitored during each tagging period. 
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A complementary technique to acoustic telemetry is otolith microchemistry, a method that can provide additional insight into individual habitat use over an entire life cycle. The chemical composition of otoliths, the ear bones found in teleost fish, can be used to: 1) identify natal origins, 2) assess individual migratory behavior, 3) quantify growth, and 4) determine duration of residency in different salinity regimes (Walther 2019). Broad-scale migration patterns can be determined by looking at the uptake of elements into the otolith. Specifically, this method measures variation in elemental ratios which differ between fresh water and marine ecosystems, providing key insight into the environment an individual was in (Walther and Limburg 2012). This can be combined with age and growth analysis to determine duration of residency within each environment, allowing for lifelong migration patterns to be analyzed. Water samples can also be taken at sampling sites to provide an expected elemental composition of the water as a comparison for uptake into the otolith; this can aid in finer-scale differentiations, especially if there are differences in geological formations that may cause distinct elemental increases in the water (Walther et al. 2008).
+ <br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; While past studies have illuminated general trends in smelt movement based on factors such as geographic latitude, river size, and distance of spawning grounds from marine water (Collette and Klein-MacPhee 2002), the specific timing in movement and key life history stages aligning with this movement have not been not well defined.Through utilizing acoustic telemetry, otolith microchemistry and additional environmental data, this study seeks to explore rainbow smelt movement within an estuarine environment. Specifically, we aim to determine smelt movement within the estuary, use of key habitats within that estuary, and the timelines and smelt life history stages associated with that movement.
 
-```{r setup, include=FALSE}
+# Methods
+```{Map 1,echo=FALSE,eval=T, tidy=TRUE}
+require(dplyr)
+library(dplyr)
+library(sp)
+library(maptools)
+library(rgdal)
+library(maptools)
+library(rgdal)
+library(raster)
+library(maps)
+library(mapdata)
+library(ggmap)
+library(marmap)
+library(lattice)
+library(ggplot2)
+library(usmap)
+library(gcookbook)
+library(dplyr)
+library(viridis)
 
+
+register_google(key= "AIzaSyDmnvI2H2L3aVAOk4cdSaDLbYZPNn1DXyQ")
+#Map for Obj 1
+myLocation <- c(lon = -70.7833, lat = 43.0989)
+
+my_points <- data.frame(lon = -70.7833, lat = 43.0989) #need to pull in CSV file earlier. Should be read in as a dataframe . Color=type
+myMap <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11) 
+
+myMap2 <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11, color="bw") 
+
+
+#Obj 1: Map of all locations, with specific marker colors, shapes, and sizes
+lat_long <- read.csv("lat_longs_rfw.csv", stringsAsFactors = TRUE)
+
+AllPoints <- data.frame(lat_long)
+
+ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = type, color= type, size = type)) + scale_shape_manual (values= c(15,17,19), labels=c("Fyke Net (4)", "Receiver (22)", "Water Sample (13)")) + scale_size_manual(values = c(4,2,2), labels=c("Fyke Net (4)", "Receiver (22)", "Water Sample (13)")) + scale_color_manual (values=c("#D55E00", "#F0E442", "#56B4E9"), labels=c("Fyke Net (4)", "Receiver (22)", "Water Sample (13)")) + ggtitle("Map of Sampling Locations in Great Bay") + theme(plot.title = element_text(face = "bold", hjust = 0.5)) + labs(shape="Sampling Method", color="Sampling Method", size="Sampling Method") + ylab("Latitude") + xlab("Longitude") #Add fig caption in markdown
+
+
+#Note that above, legend title and labels had to be added in 3 times to shape, color, and size to change label on plot. 
 ```
 
-# Map (density of detections by receiver)
-  Hanna is going to work on finding a basemap of Great Bay
-  Chloe is going to work on getting lats and longs for each point
+*Acoustic Telemetry*
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A total of 44 adult rainbow smelt from the Great Bay Watershed were tagged with acoustic transmitters in April 2021 (Vemco V5, Bedford, Nova Scotia, Canada, 12.7-mm long, 5.7-mm tall, 5.8-mm wide, 180 kHz). Smelt were tagged in three different rivers within the system: Oyster, Squamscott, and Bellamy Rivers. No smelt were tagged from the Winnicut River due to the low population numbers at the time of tagging. Tags were programmed to transmit every 80-160 seconds and had an estimated battery life of 184 days. The population of tagged smelt was representative of the available populations during the time of capture. In preparation for tagging, fish were immersed in in an anesthetic bath of MS-222 buffered with sodium bicarbonate (100-mg MS-222: 200-mg sodium bicarbonate: 1-L river water) until they were unresponsive. Once unresponsive, fish were held on a custom-built tagging table with a v-shaped trough lined with damp paper towels and water was pumped continuously across the gills (via plastic tubing). Mass (g), total length (mm), and fork length (mm) were measured (Table 1). A scalpel was used to make an incision (~6-mm) was along the ventral surface, starting just in front of the pelvic fins and moving towards the head. The acoustic tag was inserted into the body cavity and the incision was closed using two interrupted simple surgeon’s knots (size 5-0 monofilament suture with 26 mm 3/8 circle reverse-cutting needle, Ethicon, Somerville, NJ). Post-surgery, fish were held in aerated coolers to allow for recovery and observation. Once normal behavior was observed (regained mobility and equilibrium) fish were released at the site of capture. 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In March and April 2021, 18 VEMCO VR2W-180khz receivers were deployed throughout the system to listen for tagged rainbow smelt (Fig. 1). Receivers were strategically placed to monitor movement patterns within the tributaries, the Great Bay Estuary, and in and out of the Estuary. Where possible, receivers were placed in geographical chokepoints or were placed on either side of the channel to increase the probability that a tagged fish would pass by within the proper range for data to be recorded. Each receiver was pulled approximately once per month until October 2021 to offload data, check battery status, and perform general maintenance as needed before redeployment. 
 
-# 2 Animations (paths of two different individual smelt)
-1st Priority: 
-  53786 - Bellamy river, M
-  53774 - Squamscott river, F
-
-2nd Priority:
-  53792 - Squamscott river, M
-  53801 - Oyster river, M
+*Otolith Microchemistry* 
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adult and juvenile rainbow smelt were sampled for otolith microchemistry. Adult fish were obtained during NHFG’s 2021 creel and fyke net surveys. Creel survey occurred on the Oyster and Winnicut Rivers before ice-off (February 2021). Smelt were collected from anglers on a volunteer basis; either the whole fish was collected, or the head was obtained so the angler could keep the body for consumption. Adult smelt obtained through fyke net surveys (March-April 2021) were collected from the Oyster, Squamscott, Winnicut, and Bellamy Rivers (Fig. 1).  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Juvenile rainbow smelt were sampled in collaboration with NHFG’s annual juvenile finfish beach seine survey (June -November 2021) at 11 sites in the Great Bay Estuary and leading out towards the Gulf of Maine (Fig. 1). A bag seine with 6.4 mm mesh was used to sample at each site within two hours of low tide. All fish caught in the seine were identified to the lowest possible taxon, measured to the nearest mm (up to 25 individuals of each species per seine haul), and then enumerated. A subsample of rainbow smelt juveniles from each site were taken for analysis. Fish collected for otoliths, regardless of sampling method, were frozen for later otolith extraction and analysis. Total length (mm), fork length (mm), mass (g), and sex were recorded for all fish, regardless of sample method.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Water samples for dissolved elemental analysis were also taken at each sampling site and at other geographically important sites within Great Bay Estuary (Fig. 1). Water samples are important for otilith validation as the chemical signatures recorded in otoliths should reflect ambient water composition at the time of deposition (Bath et al. 2000; Campana et al. 1995; B. Walther & Thorrold 2006). Therefore, elemental analysis of water at collection sites will help validate the interpretation of otolith compositions and provide site-specific information to aid in finer spatial distribution analysis (Bradbury et al. 2008; B. D. Walther et al. 2008). Surface water samples were collected and filtered using 0.45- and 0.2-μm hydrophilic polytetrafluorethylene (PTFE) luer-lock filters (Shiller, 2003). Water was filtered through the 0.45-μm filter and 0.2-μm filters in sequence to remove all particulates. After collection samples were stored in low-density polyethylene (LDPE) bottles where they were acidified to a pH < 2 with ultrapure nitric acid and refrigerated until analysis (Shiller, 2003). All water and otolith analysis will be performed at the University of Texas Jackson School of Geosciences (UTJSG) quadrupole ICP-MS lab. Results will further illuminate trends in time allocation of rainbow smelt in marine, estuarine, and freshwater environments throughout an individual’s life history.   
   
-# 2 Figures of Data (fish characteristics)
-  Otolith vs. tag by length and sex (by river?)
-  Otolith by date?? add image as background? 
+  
+# Preliminary Findings
+*Acoustic Telemetry*
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A total of 13903 detections were collected throughout the receiver array from April-October 2021. Of the 22 receivers, 16 obtained detections. Of those 16, the most detections were found along the transition from Great Bay to the Piscataqua River (Fig. 2). The migration of tagged rainbow smelt was categorized into three locations: river, Great Bay, and exit. Fish were assumed to have left the system if they reached the seaward-most receivers in the Piscataqua River. Thirty-four tagged fish (out of 44) reached these receivers and were defined as surviving the migration out of the system. Residency was calculated as the duration of time between tagging and last detection for fish that successfully left the system (average of 38.9 +/- 1.2 days and a range of 22.7-57.2 days). 
+
+```{Map 2,echo=FALSE,eval=T, tidy=TRUE}
+#Obj 2: Bubble based on receiver pings
+require(dplyr)
+library(dplyr)
+library(viridis)
+install.packages('usmap', dependencies= TRUE)
+library(usmap)
+library(gcookbook)
+
+register_google(key= "AIzaSyDmnvI2H2L3aVAOk4cdSaDLbYZPNn1DXyQ")
+#Map for Obj 1
+myLocation <- c(lon = -70.7833, lat = 43.0989)
+
+my_points <- data.frame(lon = -70.7833, lat = 43.0989) #need to pull in CSV file earlier. Should be read in as a dataframe . Color=type
+myMap <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11) 
+
+myMap2 <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11, color="bw") 
+#bring in data file
+ReceiverPings <- read.csv("all_detection_data.csv", stringsAsFactors = TRUE)
+LatLong <- read.csv("receiver_lat_long.csv")
+#make file a data frame
+ReceiverPings <- data.frame(ReceiverPings)
+LatLong <- data.frame(LatLong)
+#combine data frame with other data set to include lat and longs into new dataset "ReceiverPingLL"
+ReceiverPingLL <- left_join(ReceiverPings, LatLong) #insert y based on X
+View(ReceiverPingLL)
+#create summary table with counts for receiver number 
+ReceiverSummary <- ReceiverPingLL%>%
+  select(receiver, latitude, longitude)%>%
+  dplyr::count(vars= receiver, latitude, longitude, name = "Frequency") %>% arrange(desc(Frequency))
+
+#make map!
+ggmap(myMap2) + geom_point(data=ReceiverSummary, aes(x=longitude, y=latitude, size=Frequency), color="white", fill="yellow", stroke= 1, pch=21, alpha=0.8) +   scale_size_continuous(range=c(1,12)) + ggtitle("Smelt Detections in Great Bay Watershed") + theme(plot.title = element_text(face = "bold", hjust = 0.5)) + ylab("Latitude") +xlab("Longitude") #discuss frequency in caption
+
+```
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Preliminary analysis of movement patterns show that most tagged fish remained in rivers until mid-April with some fish moving between rivers. In general, smelt then moved to Great Bay where they remained until early-May. Around mid-May, fish moved down the Piscataqua towards the exit of the estuary. Once fish were in the Piscataqua, they appeared to move quickly towards the exit. Inferred movements (assuming linear path of movement between receivers) can be animated to visualize these movement patterns. Individual animations provide insight towards movement patterns in relation to tagging site and sex. As a preliminary look at these movements, three individuals from the three different tagging rivers were animated using gganimate in Rstudio (Fig 3-5). 
+
+```{Annimation 1,echo=FALSE,eval=T, tidy=TRUE}
+```
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first animation shows a male tagged in the Bellamy River (tag ID #53786) (Fig. 3). Though this fish was tagged in the Bellamy River, the first detection is from the Lamprey River. This is likely because the receivers were deployed at the same time as the tags, and some were deployed after tagging events. Fish 53786 then moved up through Great Bay and back up the Bellamy River, where it remained for a few days before moving back to Great Bay. Finally, about a month after it was tagged, fish 53786 moved down the Piscataqua River, traveling to the exit in only a couple of days. 
+
+```{Annimation 2,echo=FALSE,eval=T, tidy=TRUE}
+```
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second animation shows a female tagged in the Squamscott River (tag ID #53774) (Fig. 4). 
+
+```{Annimation 3,echo=FALSE,eval=T, tidy=TRUE}
+```
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The third animation shows a male tagged in the Oyster River (tag ID #53801) (Fig. 5). 
+
+ADD MORE ABOU FINAL FIGURE??
+
+# Conclusions
+
+# References
+
   
 
-
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
