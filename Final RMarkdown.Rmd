@@ -18,12 +18,10 @@ h1.title {
 }
 h4.author { /* Header 4 - and the author and data headers use this too  */
     font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
-  text-align: center;
+    text-align: center;
 }
 h4.date { /* Header 4 - and the author and data headers use this too  */
   font-size: 18px;
-  font-family: "Times New Roman", Times, serif;
   text-align: center;
 }
 
@@ -117,7 +115,7 @@ ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = t
 # Preliminary Findings
 ***Acoustic Telemetry***
 <br> 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A total of 13903 detections were collected throughout the receiver array from April-October 2021. Of the 22 receivers, 16 obtained detections. Of those 16, the most detections were found along the transition from Great Bay to the Piscataqua River (Fig. 2). The migration of tagged rainbow smelt was categorized into three locations: river, Great Bay, and exit. Fish were assumed to have left the system if they reached the seaward-most receivers in the Piscataqua River. Thirty-four tagged fish (out of 44) reached these receivers and were defined as surviving the migration out of the system. Residency was calculated as the duration of time between tagging and last detection for fish that successfully left the system (average of 38.9 +/- 1.2 days and a range of 22.7-57.2 days). 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A total of 13903 detections were collected throughout the receiver array from April-October 2021. Of the 22 receivers, 16 obtained detections. Of those 16, the most detections were found along the transition from Great Bay to the Piscataqua River (Fig. 2). The migration of tagged rainbow smelt was categorized into three locations: river, Great Bay, and exit. Fish were assumed to have left the system if they reached the seaward-most receivers in the Piscataqua River. Thirty-four tagged fish (out of 44) reached these receivers and were defined as surviving the migration out of the system. Residency was calculated as the duration of time between tagging and last detection of fish that successfully left the system (average of 38.9 +/- 1.2 days and a range of 22.7-57.2 days). 
 
 ```{r,echo=FALSE,eval=T, tidy=TRUE, warning= FALSE, message = FALSE, fig.align= "center", fig.cap= "Frequency of detections at acoustic receivers placed in Great Bay Estuary. Larger circles indicate a greater number of pings."}
 #Obj 2: Bubble based on receiver pings
@@ -149,27 +147,27 @@ ggmap(myMap2) + geom_point(data=ReceiverSummary, aes(x=longitude, y=latitude, si
 
 ```
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Preliminary analysis of movement patterns show that most tagged fish remained in rivers until mid-April with some fish moving between rivers. In general, smelt then moved to Great Bay where they remained until early-May. Around mid-May, fish moved down the Piscataqua towards the exit of the estuary. Once fish were in the Piscataqua, they appeared to move quickly towards the exit. Inferred movements (assuming linear path of movement between receivers) can be animated to visualize these movement patterns. Individual animations provide insight towards movement patterns in relation to tagging site and sex. As a preliminary look at these movements, three individuals from the three different tagging rivers were animated using gganimate in Rstudio (Fig 3-5). 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Preliminary analysis of movement patterns show that most tagged fish remained in rivers until mid-April with some fish moving between rivers. In general, smelt then moved to Great Bay where they remained until early-May. Around mid-May, fish moved down the Piscataqua towards the exit of the estuary. Once fish were in the Piscataqua River, they appeared to move quickly towards the exit of the system. Inferred movements (assuming linear path of movement between receivers) can be animated to visualize these movement patterns. Individual animations provide insight towards movement patterns in relation to tagging site and sex. As a preliminary look at these movements, three individuals from the three different tagging rivers were animated using gganimate in Rstudio (Fig 3-5). 
 
 <div align="center">
 ![Figure 3. Inferred movements of male rainbow smelt tagged in the Bellamy River](fish53786_1.gif)
 
 <div align="left">
 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first animation shows a male tagged in the Bellamy River (tag ID #53786) (Fig. 3). Though this fish was tagged in the Bellamy River, the first detection is from the Lamprey River. This is likely because the receivers were deployed at the same time as the tags, and some were deployed after tagging events. Fish 53786 then moved up through Great Bay and back up the Bellamy River, where it remained for a few days before moving back to Great Bay. Finally, about a month after it was tagged, fish 53786 moved down the Piscataqua River, traveling to the exit in only a couple of days. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first animation shows a male rainbow smelt tagged in the Bellamy River (tag ID #53786) (Fig. 3). Though this fish was tagged in the Bellamy River, the first detection is from the Lamprey River. This is likely because most receivers were deployed simultaneously with tagging, with some receivers deployed after tagging events. Fish 53786 then moved up through Great Bay and back up the Bellamy River, where it remained for a few days before moving back to Great Bay. Finally, about a month after it was tagged, fish 53786 moved down the Piscataqua River, making its way to the exit in only a couple of days. 
 
 <div align="center">
 ![Figure 4. Inferred movements of female rainbow smelt tagged in the Squamscott River](fish53774_1.gif)
 
 <br><div align="left">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second animation shows a female tagged in the Squamscott River (tag ID #53774) (Fig. 4). Fish 53774 was also first detected in the Lamprey River. From there it moved to Great Bay, back to the Lamprey River, and back out to Great Bay over a few days. Fish 53774 then spent about a month in Great Bay moving back and forth from Great Bay proper towards the Piscataqua River. Finally, at the beginning of May, it travelled down the Pisactaqua River towards the exit in a span of two days. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second animation shows a female raindbow smelt tagged in the Squamscott River (tag ID #53774) (Fig. 4). Fish 53774 was also first detected in the Lamprey River. From there it moved to Great Bay, over to the Lamprey River, and back out to Great Bay over a few days. Fish 53774 then spent about a month in Great Bay moving back and forth from Great Bay proper towards the Piscataqua River. Finally, at the beginning of May, it traveled down the Pisactaqua River towards the exit in a span of two days. 
 
 
 <div align= "center">
 ![Figure 5. Inferred movements of female rainbow smelt tagged in the Squamscott River](fish53801_1.gif)
 
 <br><div align="left">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The third animation shows a male tagged in the Oyster River (tag ID #53801) (Fig. 5). This fish was first detected in the Oyster River and then it moved into Great Bay. Fish 53801 went back up the Oyster River once more before moving around Great Bay for about a week. In mid-April, this fish moved part-way down the Piscataqua River before heading back up to Great Bay. At the end of April, it finally migrated towards the exit, making the whole trip down the Piscataqua River in one day. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The third animation shows a male rainbow smelt tagged in the Oyster River (tag ID #53801) (Fig. 5). This fish was first detected in the Oyster River and then it moved into Great Bay. Fish 53801 went back up the Oyster River once more before traveling around Great Bay for about a week. In mid-April, this fish moved part-way down the Piscataqua River before heading back up to Great Bay. At the end of April, it finally migrated towards the exit, making the whole trip down the Piscataqua River in one day. 
 
 ```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.align= "center", fig.cap = "Figure 6. Mean total length of rainbow smelt sampled for tagging verus otolith microchemistry analysis. Samples taken across four rivers (n= 7, 21, 18 for tagged fish from the Bellamy, Oyster, and Squamscott River, respectively; n= 11, 29, 31, 8 for otolith fish from the Bellamy, Oyster, Squamscott, and Winnicut River, respectively). Error bars represent standard error."}
 
@@ -215,16 +213,16 @@ ggplot(data = total_smry,
 <br>
 ***Otolith Microchemistry***
 <br> 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Some fish were collected for otoliths using creel surveys which were earlier in the season than the fyke net sampling for tagging. The goal was to collect similar-sized fish for otoliths and tagging such that they would be similar ages. However, the demographics of the spawning run change throughout the season; the beginning of the run has more females and older individuals, both factors resulting in overall larger fish, while later in the season the run has more males and younger individuals, resulting in overall smaller fish. Therefore, the difference in timing of sample collection could have an influence on the size of the fish. Overall, the fish collected appear to be approximately the same average size with only slight variances among river, collection method, and sex (Fig. 6) which means that the collection goal was met even with the differences in collection time. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Because life history stage can influence fish movement and success, a series of measurements were collected from all fish sampled across the different sampling methodologies and systems  (sex, weight, total length). This was done to verify that fish of similar demographics were sampled regardless of sampling date, methodology, and river systems. Overall, the fish collected appear to be approximately the same average size with only slight variances among river, collection method, and sex (Fig. 6). These preliminary findings indicate that the collection goal was met even with the differences in collection time. 
 
-# Conclusions
+# Conclusions and Next Steps
 
 <br> 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; At this stage of the project, all the acoustic telemetry data has been collected and we have a preliminary understanding of the outward migration of rainbow smelt from the estuary. Preliminary analysis shows that the majority of the smelt remained in the system for about a month before emigrating, indicating that the estuary is a very important habitat for their life history. We were unable to observe the return migration, but we can conclude that they return later than mid- to- late October because receivers were left out until the beginning of November when all the tags were expected to be dead. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; At this stage of the project, all the acoustic telemetry data has been collected and we have a preliminary understanding of the outward migration of rainbow smelt from the Great Bay Estuary. Preliminary analysis shows that the majority of the smelt remained in the system for about a month before emigrating, indicating that the estuary is an important habitat for their life history. As part of this study, we were unable to observe the return migration. However, because receivers were active in the system until the beginning of November, and no rainbow smelt were observed to return, we can conclude that rainbow smelt return later than this date. 
 <br> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; More analyses need to be done on the acoustic telemetry data, such as quantifying survival rates, movement patterns, and duration of residency along different parameters including tagging site, sex, and total length. Animations provide insight towards these movement patterns but quantification is necessary for a comprehensive understanding. 
 <br> 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Much of the otolith microchemistry analysis is yet to be done. All otoliths are collected but many are not yet extracted. The otoliths need to be prepped for ICP-MS analysis by being embedded in epoxy, sectioned, and polished to reveal the core. While the acoustic telemetry data provides short-term, detailed movement patterns, the otoliths will provide long-term, rougher estimates of movement patterns. Therefore, once the otoliths are analyzed, they will compliment the acoustic telemetry data and hopefully provide information that was unable to be seen with the tags, such as the timing of the return migration into the estuary and use of the estuary overwinter. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Much of the otolith microchemistry analysis is yet to be done. All otoliths are collected but many are not yet extracted. The otoliths need to be prepped for ICP-MS analysis by being embedded in epoxy, sectioned, and polished to reveal the core. While the acoustic telemetry data provides short-term, detailed movement patterns, the otoliths will provide long-term, rougher estimates of movement patterns. Therefore, once the otoliths are analyzed, they will compliment the acoustic telemetry data and hopefully provide information that was unable to be seen through tagging data, such as the timing of the return migration into the estuary and use of the estuary overwinter. 
 
 # References
 
