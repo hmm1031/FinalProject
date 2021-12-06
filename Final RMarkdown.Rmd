@@ -31,10 +31,15 @@ h4.date { /* Header 4 - and the author and data headers use this too  */
 body{
   font-size: 14pt;
 }
+
+p.caption {
+  font-size: 0.8em;
+}
 </style>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=80), tidy=TRUE, fig.pos = "H", out.extra = "")
+knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=80), tidy=TRUE, fig.pos = "H", out.extra = "") 
+ 
 ```
 
 ### Introduction
@@ -149,7 +154,8 @@ ggmap(myMap2) + geom_point(data=ReceiverSummary, aes(x=longitude, y=latitude, si
 <div align="center">
 ![Figure 3. Inferred movements of male rainbow smelt tagged in the Bellamy River](fish53786_1.gif)
 
-<br><left>
+<div align="left">
+<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first animation shows a male tagged in the Bellamy River (tag ID #53786) (Fig. 3). Though this fish was tagged in the Bellamy River, the first detection is from the Lamprey River. This is likely because the receivers were deployed at the same time as the tags, and some were deployed after tagging events. Fish 53786 then moved up through Great Bay and back up the Bellamy River, where it remained for a few days before moving back to Great Bay. Finally, about a month after it was tagged, fish 53786 moved down the Piscataqua River, traveling to the exit in only a couple of days. 
 
 <div align="center">
@@ -165,7 +171,7 @@ ggmap(myMap2) + geom_point(data=ReceiverSummary, aes(x=longitude, y=latitude, si
 <br><div align="left">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The third animation shows a male tagged in the Oyster River (tag ID #53801) (Fig. 5). This fish was first detected in the Oyster River and then it moved into Great Bay. Fish 53801 went back up the Oyster River once more before moving around Great Bay for about a week. In mid-April, this fish moved part-way down the Piscataqua River before heading back up to Great Bay. At the end of April, it finally migrated towards the exit, making the whole trip down the Piscataqua River in one day. 
 
-```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.align = "center", fig.cap = "Figure 6. Mean total length of rainbow smelt sampled for tagging verus otolith microchemistry analysis. Samples taken across four rivers (n= 7, 21, 18 for tagged fish from the Bellamy, Oyster, and Squamscott River, respectively; n= 11, 29, 31, 8 for otolith fish from the Bellamy, Oyster, Squamscott, and Winnicut River, respectively). Error bars represent standard error."}
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.align= "center", fig.cap = "Figure 6. Mean total length of rainbow smelt sampled for tagging verus otolith microchemistry analysis. Samples taken across four rivers (n= 7, 21, 18 for tagged fish from the Bellamy, Oyster, and Squamscott River, respectively; n= 11, 29, 31, 8 for otolith fish from the Bellamy, Oyster, Squamscott, and Winnicut River, respectively). Error bars represent standard error."}
 
 data <- read.csv("tag_otolith.csv")
 
@@ -204,6 +210,9 @@ ggplot(data = total_smry,
         axis.text.x = element_text(color = "black"))+
   facet_wrap(~Location)
 ```
+
+<div align="left">
+<br>
 ***Otolith Microchemistry***
 <br> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Some fish were collected for otoliths using creel surveys which were earlier in the season than the fyke net sampling for tagging. The goal was to collect similar-sized fish for otoliths and tagging such that they would be similar ages. However, the demographics of the spawning run change throughout the season; the beginning of the run has more females and older individuals, both factors resulting in overall larger fish, while later in the season the run has more males and younger individuals, resulting in overall smaller fish. Therefore, the difference in timing of sample collection could have an influence on the size of the fish. Overall, the fish collected appear to be approximately the same average size with only slight variances among river, collection method, and sex (Fig. 6) which means that the collection goal was met even with the differences in collection time. 
