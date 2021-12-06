@@ -204,9 +204,18 @@ ggplot(data = total_smry,
         axis.text.x = element_text(color = "black"))+
   facet_wrap(~Location)
 ```
-ADD MORE ABOU FINAL FIGURE??
+***Otolith Microchemistry***
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Some fish were collected for otoliths using creel surveys which were earlier in the season than the fyke net sampling for tagging. The goal was to collect similar-sized fish for otoliths and tagging such that they would be similar ages. However, the demographics of the spawning run change throughout the season; the beginning of the run has more females and older individuals, both factors resulting in overall larger fish, while later in the season the run has more males and younger individuals, resulting in overall smaller fish. Therefore, the difference in timing of sample collection could have an influence on the size of the fish. Overall, the fish collected appear to be approximately the same average size with only slight variances among river, collection method, and sex (Fig. 6) which means that the collection goal was met even with the differences in collection time. 
 
 # Conclusions
+
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; At this stage of the project, all the acoustic telemetry data has been collected and we have a preliminary understanding of the outward migration of rainbow smelt from the estuary. Preliminary analysis shows that the majority of the smelt remained in the system for about a month before emigrating, indicating that the estuary is a very important habitat for their life history. We were unable to observe the return migration, but we can conclude that they return later than mid- to- late October because receivers were left out until the beginning of November when all the tags were expected to be dead. 
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; More analyses need to be done on the acoustic telemetry data, such as quantifying survival rates, movement patterns, and duration of residency along different parameters including tagging site, sex, and total length. Animations provide insight towards these movement patterns but quantification is necessary for a comprehensive understanding. 
+<br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Much of the otolith microchemistry analysis is yet to be done. All otoliths are collected but many are not yet extracted. The otoliths need to be prepped for ICP-MS analysis by being embedded in epoxy, sectioned, and polished to reveal the core. While the acoustic telemetry data provides short-term, detailed movement patterns, the otoliths will provide long-term, rougher estimates of movement patterns. Therefore, once the otoliths are analyzed, they will compliment the acoustic telemetry data and hopefully provide information that was unable to be seen with the tags, such as the timing of the return migration into the estuary and use of the estuary overwinter. 
 
 # References
 
