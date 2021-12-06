@@ -225,27 +225,59 @@ ggplot(data = total_smry,
 <br> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Much of the otolith microchemistry analysis is yet to be done. All otoliths are collected but many are not yet extracted. The otoliths need to be prepped for ICP-MS analysis by being embedded in epoxy, sectioned, and polished to reveal the core. While the acoustic telemetry data provides short-term, detailed movement patterns, the otoliths will provide long-term, rougher estimates of movement patterns. Therefore, once the otoliths are analyzed, they will compliment the acoustic telemetry data and hopefully provide information that was unable to be seen through tagging data, such as the timing of the return migration into the estuary and use of the estuary overwinter. 
 
+<br>
+
 # References
 
 Bernatchez, L., and Dodson, J. J. 2011. Relationship between bioenergetics and behavior in anadromous fish migrations. Canadian Journal of Fisheries and Aquatic Sciences 44: 399-407.
+<br>
+
 Buckley, L.J. 1989. Species Profiles: Life Histories and Environmental Requirements of Coastal Fishes and Invertebrates (North Atlantic); Rainbow Smelt. US Fish and Wildlife Service Biol. Rep. 82(11.106). US Army Corps of Engineers, TR EL-82-4. 11pp.  
+<br>
 Chapman, B.B., Hulthén, K., Wellenreuther, M., Hansson, L., Nilsson, J., and Brönmark, C. 2014. Patterns of animal migration. (Hansson and Åkesson, Ed.). Animal Movement Across Scales. Oxford University Press. 
+<br>
 Chase, B.C. 2006. Rainbow smelt (Osmerus mordax) spawning habitat on the Gulf of Maine Coast of Massachusetts. Massachusetts Division of Marine Fisheries, Technical Report TR-30.  
+<br>
 Clark, T.D., Furey, N.B., Rechisky, E.L., Gale, M.K., Jeffries, K.M., Porter, A.D., Casselman, M.T., Lotto, A.G., Patterson, D.A., Cooke, S.J. and Farrell, A.P. 2016. Tracking wild sockeye salmon smolts to the ocean reveals distinct regions of nocturnal movement and high mortality. Ecological applications 26(4): 959-978.  
+<br>
 Collette, B.B., and G. Klein-MacPhee, G. 2002. Bigelow and Schroeder's fishes of the Gulf of Maine. Washington and London: Smithsonian Institution Press.  
 Dingle, H. 2014. Migration: The biology of life on the move. Oxford University Press. 
-Donaldson, M.R., Hinch, S.G., Suski, C.D., Fisk, A.T., Heupel, M.R., & Cooke, S.J. 2014. Making connections in aquatic ecosystems with acoustic telemetry monitoring. Frontiers in Ecology and the Environment 12(10): 565-573.  
+<br>
+
+Donaldson, M.R., Hinch, S.G., Suski, C.D., Fisk, A.T., Heupel, M.R., & Cooke, S.J. 2014. Making connections in aquatic ecosystems with acoustic telemetry monitoring. Frontiers in Ecology and the Environment 12(10): 565-573. 
+<br>
+
 Enterline, C.L., Chase, B.C., Carloni, J.M., and Mills, K.E. 2012. A Regional Conservation Plan for Anadromous Rainbow Smelt in the U.S. Gulf of Maine. 100 p. 
+<br>
 Furey, N. B., Dance, M. A., and Rooker, J. R. 2013. Fine-scale movements and habitat use of juvenile southern flounder Paralichthys lethostigma in an estuarine seascape. Journal of Fish Biology 82(5): 1469-1483.
+<br>
+
 Furey, N.B., Hinch, S.G., Bass, A.L., Middleton, C.T., Minke-Martin, V., and Lotto, A.G. 2016. Predator swamping reduces predation risk during nocturnal migration of juvenile salmon in a high-mortality landscape. Journal of Animal Ecology 85:948-959.  
+<br>
 Holdo, R.M., Holt, R.D., Sinclair, A.R.E., Godley, B.J., and Thirgood, S. 2011. Migration impacts on communities and ecosystems: empirical evidence and theoretical insights. (Milner-Gulland, Fryxell, and Sinclair, Ed.). Animal Migration, a synthesis. Oxford University Press. 
+<br>
+
 Hussey N.E., Kessel S.T., Aarestrup K., Cooke S., Cowley P., Fisk A., Harcourt R., Holland K., Iverson S., Kocik J., Mills Flemming J., and Whoriskey F. 2015. Aquatic animal telemetry: a panoramic window into the underwater world. Science 348:1255642. 
+<br>
+
 Kendall, W.C. 1926. The Smelts. Bulletin of the United States Bureau of Fisheries 42. 
+<br>
+
 Myers, G. S. 1949. Usage of anadromous, catadromous and allied terms for migratory fishes. Copeia 1949(2): 89-97. 
+<br>
+
 Secor, D.H. 2015. Migration ecology of fishes. Johns Hopkins University Press, Baltimore. 
+<br>
+
 Walther, B.D. 2019. The art of otolith chemistry: interpreting patterns by integrating perspectives. Marine and Freshwater Research. DOI: 10.1071/MF18270.
-Walther, B.D., and Limburg, K.E. 2012. The use of otolith chemistry to characterize diadromous migrations. Journal of Fish Biology 81(2): 796-825.  
+<br>
+
+Walther, B.D., and Limburg, K.E. 2012. The use of otolith chemistry to characterize diadromous migrations. Journal of Fish Biology 81(2): 796-825. 
+<br>
+
 Walther, B.D., Thorrold, S.R., and Olney, J.E. 2008. Geochemical signatured in otoliths record natal origins of American shad. Transactions of the American Fisheries Society 137(1): 57-69 
+
+
 
 
   
