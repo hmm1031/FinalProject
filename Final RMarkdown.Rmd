@@ -5,7 +5,8 @@ author: "Hanna Mogensen & Chloe Pearson"
 date: "12/07/2021"
 output:
   pdf_document: 
-    latex_engine: xelatex
+     latex_engine: xelatex
+     extra_dependencies: ["float"]
 ---
 <style type="text/css">
 
