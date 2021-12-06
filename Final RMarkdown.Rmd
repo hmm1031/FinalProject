@@ -45,8 +45,7 @@ knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=80), tidy=TRUE)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; While past studies have illuminated general trends in smelt movement based on factors such as geographic latitude, river size, and distance of spawning grounds from marine water (Collette and Klein-MacPhee 2002), the specific timing in movement and key life history stages aligning with this movement have not been not well defined.Through utilizing acoustic telemetry, otolith microchemistry and additional environmental data, this study seeks to explore rainbow smelt movement within an estuarine environment. Specifically, we aim to determine smelt movement within the estuary, use of key habitats within that estuary, and the timelines and smelt life history stages associated with that movement.
 
 # Methods
-```{Map 1,echo=FALSE,eval=T, tidy=TRUE}
-require(dplyr)
+```{r,echo=FALSE,eval=T, tidy=TRUE, warning= FALSE, message = FALSE, fig.align= "center"}
 library(dplyr)
 library(sp)
 library(maptools)
@@ -64,13 +63,17 @@ library(usmap)
 library(gcookbook)
 library(dplyr)
 library(viridis)
+library(plotrix)
+library(readxl)
+library(lubridate)
+library(stringr)
 
 
 register_google(key= "AIzaSyDmnvI2H2L3aVAOk4cdSaDLbYZPNn1DXyQ")
 #Map for Obj 1
 myLocation <- c(lon = -70.7833, lat = 43.0989)
 
-my_points <- data.frame(lon = -70.7833, lat = 43.0989) #need to pull in CSV file earlier. Should be read in as a dataframe . Color=type
+#need to pull in CSV file earlier. Should be read in as a dataframe . Color=type
 myMap <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11) 
 
 myMap2 <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11, color="bw") 
@@ -79,7 +82,7 @@ myMap2 <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11, color
 #Obj 1: Map of all locations, with specific marker colors, shapes, and sizes
 lat_long <- read.csv("lat_longs_rfw.csv", stringsAsFactors = TRUE)
 
-AllPoints <- data.frame(lat_long)
+AllPoints <- lat_long
 
 ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = type, color= type, size = type)) + scale_shape_manual (values= c(15,17,19), labels=c("Fyke Net (4)", "Receiver (22)", "Water Sample (13)")) + scale_size_manual(values = c(4,2,2), labels=c("Fyke Net (4)", "Receiver (22)", "Water Sample (13)")) + scale_color_manual (values=c("#D55E00", "#F0E442", "#56B4E9"), labels=c("Fyke Net (4)", "Receiver (22)", "Water Sample (13)")) + ggtitle("Map of Sampling Locations in Great Bay") + theme(plot.title = element_text(face = "bold", hjust = 0.5)) + labs(shape="Sampling Method", color="Sampling Method", size="Sampling Method") + ylab("Latitude") + xlab("Longitude") #Add fig caption in markdown
 
@@ -105,20 +108,15 @@ ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = t
 <br> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A total of 13903 detections were collected throughout the receiver array from April-October 2021. Of the 22 receivers, 16 obtained detections. Of those 16, the most detections were found along the transition from Great Bay to the Piscataqua River (Fig. 2). The migration of tagged rainbow smelt was categorized into three locations: river, Great Bay, and exit. Fish were assumed to have left the system if they reached the seaward-most receivers in the Piscataqua River. Thirty-four tagged fish (out of 44) reached these receivers and were defined as surviving the migration out of the system. Residency was calculated as the duration of time between tagging and last detection for fish that successfully left the system (average of 38.9 +/- 1.2 days and a range of 22.7-57.2 days). 
 
-```{Map 2,echo=FALSE,eval=T, tidy=TRUE}
+```{r,echo=FALSE,eval=T, tidy=TRUE, warning= FALSE, message = FALSE, fig.align= "center"}
 #Obj 2: Bubble based on receiver pings
-require(dplyr)
-library(dplyr)
-library(viridis)
-install.packages('usmap', dependencies= TRUE)
-library(usmap)
-library(gcookbook)
+
 
 register_google(key= "AIzaSyDmnvI2H2L3aVAOk4cdSaDLbYZPNn1DXyQ")
 #Map for Obj 1
 myLocation <- c(lon = -70.7833, lat = 43.0989)
 
-my_points <- data.frame(lon = -70.7833, lat = 43.0989) #need to pull in CSV file earlier. Should be read in as a dataframe . Color=type
+#need to pull in CSV file earlier. Should be read in as a dataframe . Color=type
 myMap <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11) 
 
 myMap2 <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11, color="bw") 
@@ -126,14 +124,13 @@ myMap2 <- get_googlemap(center= myLocation, maptype= "satellite", zoom=11, color
 ReceiverPings <- read.csv("all_detection_data.csv", stringsAsFactors = TRUE)
 LatLong <- read.csv("receiver_lat_long.csv")
 #make file a data frame
-ReceiverPings <- data.frame(ReceiverPings)
-LatLong <- data.frame(LatLong)
+
 #combine data frame with other data set to include lat and longs into new dataset "ReceiverPingLL"
 ReceiverPingLL <- left_join(ReceiverPings, LatLong) #insert y based on X
-View(ReceiverPingLL)
+
 #create summary table with counts for receiver number 
-ReceiverSummary <- ReceiverPingLL%>%
-  select(receiver, latitude, longitude)%>%
+ReceiverSummary <- ReceiverPingLL %>%
+  dplyr::select(receiver, latitude, longitude)%>%
   dplyr::count(vars= receiver, latitude, longitude, name = "Frequency") %>% arrange(desc(Frequency))
 
 #make map!
@@ -143,21 +140,64 @@ ggmap(myMap2) + geom_point(data=ReceiverSummary, aes(x=longitude, y=latitude, si
 <br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Preliminary analysis of movement patterns show that most tagged fish remained in rivers until mid-April with some fish moving between rivers. In general, smelt then moved to Great Bay where they remained until early-May. Around mid-May, fish moved down the Piscataqua towards the exit of the estuary. Once fish were in the Piscataqua, they appeared to move quickly towards the exit. Inferred movements (assuming linear path of movement between receivers) can be animated to visualize these movement patterns. Individual animations provide insight towards movement patterns in relation to tagging site and sex. As a preliminary look at these movements, three individuals from the three different tagging rivers were animated using gganimate in Rstudio (Fig 3-5). 
 
-```{Annimation 1,echo=FALSE,eval=T, tidy=TRUE}
-```
-<br>
+<div align="center">
+![Figure 3. Inferred movements of male rainbow smelt tagged in the Bellamy River](fish53786_1.gif)
+
+<br><left>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first animation shows a male tagged in the Bellamy River (tag ID #53786) (Fig. 3). Though this fish was tagged in the Bellamy River, the first detection is from the Lamprey River. This is likely because the receivers were deployed at the same time as the tags, and some were deployed after tagging events. Fish 53786 then moved up through Great Bay and back up the Bellamy River, where it remained for a few days before moving back to Great Bay. Finally, about a month after it was tagged, fish 53786 moved down the Piscataqua River, traveling to the exit in only a couple of days. 
 
-```{Annimation 2,echo=FALSE,eval=T, tidy=TRUE}
-```
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second animation shows a female tagged in the Squamscott River (tag ID #53774) (Fig. 4). 
+<div align="center">
+![Figure 4. Inferred movements of female rainbow smelt tagged in the Squamscott River](fish53774_1.gif)
 
-```{Annimation 3,echo=FALSE,eval=T, tidy=TRUE}
-```
-<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The third animation shows a male tagged in the Oyster River (tag ID #53801) (Fig. 5). 
+<br><div align="left">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second animation shows a female tagged in the Squamscott River (tag ID #53774) (Fig. 4). Fish 53774 was also first detected in the Lamprey River. From there it moved to Great Bay, back to the Lamprey River, and back out to Great Bay over a few days. Fish 53774 then spent about a month in Great Bay moving back and forth from Great Bay proper towards the Piscataqua River. Finally, at the beginning of May, it travelled down the Pisactaqua River towards the exit in a span of two days. 
 
+
+<div align= "center">
+![Figure 5. Inferred movements of female rainbow smelt tagged in the Squamscott River](fish53801_1.gif)
+
+<br><div align="left">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The third animation shows a male tagged in the Oyster River (tag ID #53801) (Fig. 5). This fish was first detected in the Oyster River and then it moved into Great Bay. Fish 53801 went back up the Oyster River once more before moving around Great Bay for about a week. In mid-April, this fish moved part-way down the Piscataqua River before heading back up to Great Bay. At the end of April, it finally migrated towards the exit, making the whole trip down the Piscataqua River in one day. 
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE, fig.align = "center", fig.cap = "Figure 6. Mean total length of rainbow smelt sampled for tagging verus otolith microchemistry analysis. Samples taken across four rivers (n= 7, 21, 18 for tagged fish from the Bellamy, Oyster, and Squamscott River, respectively; n= 11, 29, 31, 8 for otolith fish from the Bellamy, Oyster, Squamscott, and Winnicut River, respectively). Error bars represent standard error."}
+
+data <- read.csv("tag_otolith.csv")
+
+
+# remove river so sites called by just name, not name+river
+data$Location <- sub("Squamscott River", "Squamscott", data$Location)
+data$Location <- sub("Squamscott", "Squamscott River", data$Location)
+
+data$Location <- sub("Oyster River", "Oyster", data$Location)
+data$Location <- sub("Oyster", "Oyster River", data$Location)
+
+data$Location <- sub("Bellamy River", "Bellamy", data$Location)
+data$Location <- sub("Bellamy", "Bellamy River", data$Location)
+
+data$Location <- sub("Winnicut River", "Winnicut", data$Location)
+data$Location <- sub("Winnicut", "Winnicut River", data$Location)
+
+total_grouped <- group_by(data, type, Sex, Location)
+
+total_smry <- summarize(total_grouped,
+                        mean_tl = mean(TL..mm.), 
+                        se_tl = std.error(TL..mm.))
+
+
+
+#TL of otoliths vs tagged fish by river and sex
+ggplot(data = total_smry, 
+       mapping = aes(x = type, y = mean_tl, ymin = mean_tl- se_tl, ymax = mean_tl+ se_tl, fill = Sex)) +
+  geom_bar(stat = "identity", position = position_dodge()) + 
+  geom_errorbar(colour = "black", stat = "identity", position = position_dodge(0.65), width = 0.4) +
+  theme_classic() +
+  labs(x = "", y = "Mean total length (mm)", color = "Sex") +
+  theme(axis.title.y = element_text(vjust = 2.5), 
+        axis.title.x = element_text(vjust = -0.3), 
+        axis.text.y = element_text(color = "black"), 
+        axis.text.x = element_text(color = "black"))+
+  facet_wrap(~Location)
+```
 ADD MORE ABOU FINAL FIGURE??
 
 # Conclusions
