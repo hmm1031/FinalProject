@@ -1,8 +1,11 @@
 ---
-title: "BIOL 806: Final Project <br> Movement Patterns of Rainbow Smelt in Great Bay Estuary, NH"
+title: 'BIOL 806: Final Project <br> Movement Patterns of Rainbow Smelt in Great Bay
+  Estuary, NH'
 author: "Hanna Mogensen & Chloe Pearson"
 date: "12/07/2021"
-output: html_document
+output:
+  pdf_document: 
+    latex_engine: xelatex
 ---
 <style type="text/css">
 
@@ -28,7 +31,7 @@ body{
 </style>
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=80), tidy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=80), tidy=TRUE, fig.pos = "H", out.extra = "")
 ```
 
 ### Introduction
@@ -45,7 +48,7 @@ knitr::opts_chunk$set(echo = TRUE,tidy.opts=list(width.cutoff=80), tidy=TRUE)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; While past studies have illuminated general trends in smelt movement based on factors such as geographic latitude, river size, and distance of spawning grounds from marine water (Collette and Klein-MacPhee 2002), the specific timing in movement and key life history stages aligning with this movement have not been not well defined.Through utilizing acoustic telemetry, otolith microchemistry and additional environmental data, this study seeks to explore rainbow smelt movement within an estuarine environment. Specifically, we aim to determine smelt movement within the estuary, use of key habitats within that estuary, and the timelines and smelt life history stages associated with that movement.
 
 # Methods
-```{r,echo=FALSE,eval=T, tidy=TRUE, warning= FALSE, message = FALSE, fig.align= "center"}
+```{r,echo=FALSE,eval=T, tidy=TRUE, results= FALSE, warning= FALSE, message = FALSE, fig.align= "center", fig.cap= "Map showing three different sampling methods (fyke netting, acoustic telemetry receivers, and water sampling) conducted within the Great Bay watershed to assess movement of adult and juvenile rainbow smelt"}
 library(dplyr)
 library(sp)
 library(maptools)
@@ -108,7 +111,7 @@ ggmap(myMap) + geom_point(data=AllPoints, aes(x=longitude, y=latitude, shape = t
 <br> 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A total of 13903 detections were collected throughout the receiver array from April-October 2021. Of the 22 receivers, 16 obtained detections. Of those 16, the most detections were found along the transition from Great Bay to the Piscataqua River (Fig. 2). The migration of tagged rainbow smelt was categorized into three locations: river, Great Bay, and exit. Fish were assumed to have left the system if they reached the seaward-most receivers in the Piscataqua River. Thirty-four tagged fish (out of 44) reached these receivers and were defined as surviving the migration out of the system. Residency was calculated as the duration of time between tagging and last detection for fish that successfully left the system (average of 38.9 +/- 1.2 days and a range of 22.7-57.2 days). 
 
-```{r,echo=FALSE,eval=T, tidy=TRUE, warning= FALSE, message = FALSE, fig.align= "center"}
+```{r,echo=FALSE,eval=T, tidy=TRUE, warning= FALSE, message = FALSE, fig.align= "center", fig.cap= "Frequency of detections at acoustic receivers placed in Great Bay Estuary. Larger circles indicate a greater number of pings."}
 #Obj 2: Bubble based on receiver pings
 
 
