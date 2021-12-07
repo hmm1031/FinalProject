@@ -161,7 +161,7 @@ ggmap(myMap2) + geom_point(data=ReceiverSummary, aes(x=longitude, y=latitude, si
 ![Figure 4. Inferred movements of female rainbow smelt tagged in the Squamscott River](fish53774_1.gif)
 
 <br><div align="left">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second animation shows a female raindbow smelt tagged in the Squamscott River (tag ID #53774) (Fig. 4). Fish 53774 was also first detected in the Lamprey River. From there it moved to Great Bay, over to the Lamprey River, and back out to Great Bay over a few days. Fish 53774 then spent about a month in Great Bay moving back and forth from Great Bay proper towards the Piscataqua River. Finally, at the beginning of May, it traveled down the Pisactaqua River towards the exit in a span of two days. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The second animation shows a female rainbow smelt tagged in the Squamscott River (tag ID #53774) (Fig. 4). Fish 53774 was also first detected in the Lamprey River. From there it moved to Great Bay, over to the Lamprey River, and back out to Great Bay over a few days. Fish 53774 then spent about a month in Great Bay moving back and forth from Great Bay proper towards the Piscataqua River. Finally, at the beginning of May, it traveled down the Pisactaqua River towards the exit in a span of two days. 
 
 
 <div align= "center">
